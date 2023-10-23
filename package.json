@@ -25,6 +25,7 @@
 	],
 	"peerDependencies": {
 		"svelte": "^4.0.0",
+		"@sveltejs/kit": "^1.20.4",
 		"katex": "^0.16.9",
 		"prismjs": "^1.29.0",
 		"pug": "^3.0.2",
