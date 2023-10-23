@@ -1,0 +1,3 @@
+@function relative_vw($m) {
+	@return calc((100vw - var(--left-panel) * var(--padding-main) * 2) / 100 * $m)
+}

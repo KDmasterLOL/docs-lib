@@ -1,0 +1,75 @@
+mixin example
+	button.example Example
+	.example&attributes(attributes): block
+
+mixin code_escape(language="cpp")
+	script(type="text/plain" class = "language-"+language): block
+mixin code(language)
+	- var oldBuf = pug_html;
+	- pug_html = '';
+	block
+	- code_block = pug_html;
+	- pug_html = oldBuf; 
+	if language
+		- code_block = code_block.replace(/\n/g,"\\n").replace(/\t/g,"\\t")
+		<CodeBlock language='#{language}' code={`!{code_block}`}></CodeBlock>
+	else
+		- code_block = code_block.replace(/{/g,'&lcub;').replace(/}/g,'&rcub;');
+		code= code_block
+
+mixin project
+	div.project
+		menu(type="toolbar")
+		block
+mixin code_block(language, file="")
+	if language
+		pre: code(class = "language-"+language data-file=file): block
+	else
+		pre&attributes(attributes): code: block
+
+mixin source()
+	if attributes.links
+		each link in attributes.links
+			a(href=link)
+	if attributes.books
+		each book in attributes.books
+			a(href!="{book_"+book.index+"+'#page="+(book.page || 0)+"'}")
+
+mixin m(where)
+	- var oldBuf = pug_html;
+	- pug_html = '';
+	block
+	- secBuf = pug_html;
+	- pug_html = '';
+	- is_block = attributes.class && attributes.class.includes("block") ? "true" : "false"
+	<Math expression={String.raw`!{secBuf}`} is_block={#{is_block}}></Math>
+	- pug_html = oldBuf + pug_html
+	if where
+		span
+			| (
+			each val,index in where
+				span #[+m= index] #[span= ': ' + val + ', '] 
+			| )
+
+
+mixin LPTASK(objective,constraints,raw=false)
+	- objective = objective.replaceAll('\\eq','=')
+	- constraints = constraints.replaceAll('\\eq','=')
+	- expression = (attributes.class || "").includes('beauty') ? String.raw`\begin{aligned} \text{maximize/minimize} \quad &  z=${objective}\\ \text{subject to} \quad & ${constraints.replaceAll('\\\\','\\\\ &')} \end{aligned}` : String.raw`\begin{aligned}z=${objective} \rightarrow \max \\ \begin{cases} ${constraints}\end{cases}\end{aligned}`
+	if raw == false
+		+m&attributes(attributes)!= expression
+	else
+		| !{expression}
+mixin LPTABLE(rows)
+	+m
+		| \begin{array}{c|#{'c'.repeat(rows[0].length-2)}|c}
+		each row,index in rows
+			each number, index in row
+				if index == 0
+					| #{number}
+				else
+					| & #{number}
+			| \\
+			if index == 0
+				| \hline
+		| \end{array}
