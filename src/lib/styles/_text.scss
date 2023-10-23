@@ -1,0 +1,193 @@
+@import "headers";
+@import "custom_elements";
+
+html {
+	color: var(--text);
+	font-size: max(18px, 2vw);
+	font-family: serif;
+
+	@media screen and (max-width: 800px) {
+		word-break: break-all;
+	}
+}
+
+
+
+
+a {
+	color: aquamarine;
+
+	&:empty {
+		float: right;
+
+		&::after {
+			content: "#";
+		}
+	}
+
+	&:visited {
+		color: aqua;
+	}
+}
+
+
+
+
+// # Code
+pre {
+	overflow-x: scroll;
+}
+
+.compilation_from_to {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	width: 100%;
+
+	pre[rel] {
+		position: relative;
+
+		&::before {
+			position: absolute;
+			right: 0.5rem;
+			top: 0.2rem;
+			color: yellow;
+			font-size: small;
+			content: attr(rel);
+		}
+
+		font-size: 0.9rem;
+	}
+}
+
+code {
+	font-family: "Verdana";
+	font-weight: 400;
+	font-size: 0.8em;
+	word-break: keep-all;
+	color: var(--code);
+	background-color: var(--code-background);
+
+	@include spaces-around;
+
+	@media screen and (width <=900px) {
+		word-break: break-all;
+	}
+}
+
+pre {
+	code {
+		padding: 0;
+		font-size: 1rem;
+	}
+
+	background-color: var(--code-background);
+	border-radius: 0.1rem;
+	padding: 0.5rem;
+}
+
+
+pre+samp {
+	@include background(code);
+	display: block;
+	width: 100%;
+	padding: $space;
+	padding-left: $space;
+
+}
+
+dir {
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	font-weight: bold;
+	display: inline;
+}
+
+
+
+
+dl {
+	dl {
+		padding-left: 1rem;
+	}
+
+	&:not(.where) dt:not(.dis) {}
+
+	dd {
+
+		position: relative;
+
+		&::before {
+			position: absolute;
+			content: '└';
+			left: -1.5rem;
+			top: 0;
+		}
+	}
+}
+
+mark {
+	@include background(mark, 0);
+	color: var(--mark-color)
+}
+
+
+path {
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+span {
+	&.example {
+		&::before {
+			content: "(";
+		}
+
+		&.etc::after {
+			content: ",…)";
+		}
+
+		&::after {
+			content: ")";
+		}
+	}
+
+}
+
+p {
+	&[title] {
+		content: '(' attr(title)')';
+	}
+
+	strong.heading {
+		font-size: 1.25rem;
+		font-weight: 600;
+		margin-right: 0.3rem;
+		text-shadow: 2px 3px gray;
+		font-family: $header-font;
+	}
+
+	$size-marker: 4rem;
+
+	&.note {
+		position: relative;
+		margin: 0.5rem;
+		padding: 0.4rem;
+		padding-top: 1.2rem;
+		padding-left: 1.5rem;
+		background-color: var(--note-background);
+		border-radius: 10px;
+
+		&::before {
+			position: absolute;
+			content: 'Note:';
+			top: 0.2rem;
+			font-weight: bold;
+			left: 0.4rem;
+		}
+
+		&[title] {
+			&::before {
+				content: 'Note: ' attr(title);
+			}
+		}
+	}
+}
