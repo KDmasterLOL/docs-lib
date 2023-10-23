@@ -2,7 +2,7 @@
 /** @typedef {typeof __propDef.events}  CodeBlockEvents */
 /** @typedef {typeof __propDef.slots}  CodeBlockSlots */
 export default class CodeBlock extends SvelteComponent<{
-    language: any;
+    language: string;
     code: any;
 }, {
     [evt: string]: CustomEvent<any>;
@@ -14,7 +14,7 @@ export type CodeBlockSlots = typeof __propDef.slots;
 import { SvelteComponent } from "svelte";
 declare const __propDef: {
     props: {
-        language: any;
+        language: string;
         code: any;
     };
     events: {

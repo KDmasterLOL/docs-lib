@@ -9,14 +9,17 @@
 	import "prismjs/components/prism-python.js";
 	import "prismjs/themes/prism-dark.min.css";
 
+	/**
+	 * @type {string}
+	 */
 	export let language;
 	export let code;
 	let html = "";
-	if (Prism.languages && Prism.languages[language]) {
-		html = Prism.highlight(code.trim(), Prism.languages[language], language);
-	} else {
-		html = `<span>${code}</span>`;
-	}
+	// if (Prism.languages && Prism.languages[language]) {
+	html = Prism.highlight(code.trim(), Prism.languages[language], language);
+	// } else {
+	// 	html = `<span>${code}</span>`;
+	// }
 </script>
 
 <pre class={"language-" + language}><code class={"language-" + language}
