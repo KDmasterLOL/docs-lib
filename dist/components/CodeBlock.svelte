@@ -1,11 +1,11 @@
 <script>
 	import Prism from "prismjs";
-	import "prismjs/components/prism-rust";
-	import "prismjs/components/prism-pug";
-	import "prismjs/components/prism-c";
-	import "prismjs/components/prism-cpp";
-	import "prismjs/components/prism-bash";
-	import "prismjs/components/prism-python";
+	import "prismjs/components/prism-rust.js";
+	import "prismjs/components/prism-pug.js";
+	import "prismjs/components/prism-c.js";
+	import "prismjs/components/prism-cpp.js";
+	import "prismjs/components/prism-bash.js";
+	import "prismjs/components/prism-python.js";
 	import "prismjs/themes/prism-dark.min.css";
 
 	export let language;
