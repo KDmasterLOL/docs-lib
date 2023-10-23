@@ -12,7 +12,7 @@
 	export let language;
 	export let code;
 	let html = "";
-	if (Prism.languages[language]) {
+	if (Prism.languages && Prism.languages[language]) {
 		html = Prism.highlight(code.trim(), Prism.languages[language], language);
 	} else {
 		html = `<span>${code}</span>`;
