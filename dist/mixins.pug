@@ -11,7 +11,7 @@ mixin code(language)
 	- code_block = pug_html;
 	- pug_html = oldBuf; 
 	if language
-		- code_block = code_block.replace(/\n/g,"\\n").replace(/\t/g,"\\t")
+		- code_block = code_block.replace(/\n/g,"\\n").replace(/\t/g,"\\t").replace(/`/g,"&grave;")
 		<CodeBlock language='#{language}' code={`!{code_block}`}></CodeBlock>
 	else
 		- code_block = code_block.replace(/{/g,'&lcub;').replace(/}/g,'&rcub;');
