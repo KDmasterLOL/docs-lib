@@ -1,79 +1,116 @@
-@import "themes/default";
+@use "animations";
+@import "text";
+@import "variables";
+@import "mixins";
 
+html {
+  background-color: var(--background);
+  font-family: "Source Sans Pro";
+  word-break: keep-all;
+  font-size: 21px;
+  color: var(--text-color);
+  border-color: var(--text-color);
+  hyphens: auto;
+}
 
+img,
+iframe {
+  @extend .invert;
+  @extend .center;
+}
 
-
-
-.katex-display {
-  overflow-x: scroll;
-  overflow-y: hidden;
+.center {
+  margin: auto;
+  max-width: 100%;
+  display: block;
 }
 
 figure {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  border: 1px white solid;
+  margin: $space;
+  padding: $space;
+  border: solid thin;
 
   figcaption {
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
+    @include headers {
+      all: unset;
       font-size: 2rem;
     }
+
+    text-align: center;
   }
 }
 
-span {
-  &.example {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 0.9rem;
-  }
-}
+details {
+  box-sizing: border-box;
 
-ol,
-ul {
-  $margin: 2rem;
-
-  margin: 0 {
-    top: $margin;
-    bottom: $margin;
+  padding: 0.5rem {
+    left: $space;
+    top: 0;
   }
 
-  padding-left: 2rem;
+  &[open] {
+    overflow: hidden;
+    border-left: 0.1rem solid var(--text-color);
+    border-bottom: 0.1rem solid var(--text-color);
 
-  &[title] {
-    &::before {
-      content: attr(title)':';
-      font-weight: bold;
-      display: block;
-      margin: 0;
-      padding: 0;
+    summary {
+      border-bottom: thin solid;
     }
   }
 
-  li {
-    $margin: 0.3rem;
+  &[open] summary,
+  summary:hover {
+    background-color: rgba(gray, 0.5);
+  }
 
-    margin: 0 {
-      top: $margin;
-      bottom: $margin;
-    }
+  @include headers {
+    all: unset;
+    font-size: 2rem;
+  }
 
-    *:first-child {
+  summary {
+    padding-left: 1rem;
+    user-select: none;
+    border-radius: 1rem 1rem 0 0;
+    transition: background-color 0.5s linear;
+
+    +* {
       margin-top: 0;
     }
+  }
+}
 
-    *:last-child {
-      margin-bottom: 0;
+table,
+th,
+td {
+  border: 0.5px solid var(--text-color);
+  border-radius: 2px;
+}
+
+ul {
+  &.algorithm {
+    .name {
+      &::before {
+        content: "❖";
+      }
     }
   }
+}
 
-  &.note {
-    background-color: var(--note-background);
+
+@keyframes blink {
+  0% {
+    opacity: 100%;
+  }
+
+  50% {
+    opacity: 0%;
+  }
+
+  100% {
+    opacity: 100%;
   }
 }

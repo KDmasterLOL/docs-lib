@@ -1,3 +1,4 @@
+/// <reference types="svelte" />
 export { default as Switcher } from "./components/Switcher.svelte";
 import CodeBlock from './components/CodeBlock.svelte';
 import Collapse from './components/Collapse.svelte';

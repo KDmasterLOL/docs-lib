@@ -1,41 +1,57 @@
+$font-Forum: Forum;
+$font-SSP: "Source Sans Pro";
+$font-PD: "Playfair Display";
+$color-dark-gray: rgb(50, 50, 50);
 $space: 0.4rem;
-$tools-index: 999;
-$pop-up-index: $tools-index - 1;
-$screen-save: 15px;
+$index-toolbar: 999;
+$buety-black: #121416d8;
 $left-panel-speed: 0.5s;
+$pop-up-index: 100;
 
 :root {
-	--darkness: 0%;
+  --darkness: 0%;
+  --background: color-mix(in srgb, black var(--darkness), white);
+  --second-background: #999;
+  --solution: green;
+  --shadow-color: gray;
 
-	--background: color-mix(in srgb, black var(--darkness), white);
-	--second-background: color-mix(in srgb, brown 0.2, var(--background));
+  --text-color: black;
+  --second-text: #928da0;
+  --text-added-color: #7f88ac;
 
-	--note-background: rgb(70, 70, 0);
-	--mark-background-color: #6c6100;
-	--code-background: #343434; // rgb(32, 64, 75)
-	--important-background-color: rgb(111, 4, 4); // rgb(32, 64, 75)
+  --link-color: #543fd7;
+  --note-color: yellow;
+  --mark-color: yellow;
 
+  --invert: var(--darkness);
 
-	--remark-color: rgb(45, 43, 73);
-	--note-color: rgb(45, 43, 73);
-	--important-color: rgb(111, 4, 4);
-	--code-color: rgb(255, 229, 144);
-	--mark-color: white;
+  --important-color: rgb(143, 0, 0);
 
 
-	--text: black;
-	--second-text: rgb(141, 255, 153);
-	--third-text: rgb(153, 205, 255);
-	--added-text: rgb(0, 146, 146);
 
-	--padding-main: 10vw;
-	--left-panel: 0;
+
+
+  --content-margin: 10vw;
 }
 
 @media (prefers-color-scheme: dark) {
-	:root {
-		--darkness: 100%;
+  :root {
+    --darkness: 95%;
+    --second-background: #3e2628;
 
-		--text: white;
-	}
+    --shadow-color: #558ABB;
+
+    --text-color: #d7d7d7;
+    --second-text: #928da0;
+    --text-added-color: #7f88ac;
+
+    --link-color: #6ee4ff;
+    --note-color: #746429;
+    --mark-color: rgb(73, 73, 0);
+
+    --important-color: rgb(183, 0, 0);
+
+    --solution: rgb(13, 150, 13);
+
+  }
 }

@@ -32,59 +32,53 @@ exports.class = className;
 <style global>:global(:root) {
   --darkness: 0%;
   --background: color-mix(in srgb, black var(--darkness), white);
-  --second-background: color-mix(in srgb, brown 0.2, var(--background));
-  --note-background: rgb(70, 70, 0);
-  --mark-background-color: #6c6100;
-  --code-background: #343434;
-  --important-background-color: rgb(111, 4, 4);
-  --remark-color: rgb(45, 43, 73);
-  --note-color: rgb(45, 43, 73);
-  --important-color: rgb(111, 4, 4);
-  --code-color: rgb(255, 229, 144);
-  --mark-color: white;
-  --text: black;
-  --second-text: rgb(141, 255, 153);
-  --third-text: rgb(153, 205, 255);
-  --added-text: rgb(0, 146, 146);
-  --padding-main: 10vw;
-  --left-panel: 0;
+  --second-background: #999;
+  --solution: green;
+  --shadow-color: gray;
+  --text-color: black;
+  --second-text: #928da0;
+  --text-added-color: #7f88ac;
+  --link-color: #543fd7;
+  --note-color: yellow;
+  --mark-color: yellow;
+  --invert: var(--darkness);
+  --important-color: rgb(143, 0, 0);
+  --content-margin: 10vw;
 }
 
 @media (prefers-color-scheme: dark) {
   :global(:root) {
-    --darkness: 100%;
-    --text: white;
+    --darkness: 95%;
+    --second-background: #3e2628;
+    --shadow-color: #558ABB;
+    --text-color: #d7d7d7;
+    --second-text: #928da0;
+    --text-added-color: #7f88ac;
+    --link-color: #6ee4ff;
+    --note-color: #746429;
+    --mark-color: rgb(73, 73, 0);
+    --important-color: rgb(183, 0, 0);
+    --solution: rgb(13, 150, 13);
   }
 }
-:global(:root) {
-  --darkness: 0%;
-  --background: color-mix(in srgb, black var(--darkness), white);
-  --second-background: color-mix(in srgb, brown 0.2, var(--background));
-  --note-background: rgb(70, 70, 0);
-  --mark-background-color: #6c6100;
-  --code-background: #343434;
-  --important-background-color: rgb(111, 4, 4);
-  --remark-color: rgb(45, 43, 73);
-  --note-color: rgb(45, 43, 73);
-  --important-color: rgb(111, 4, 4);
-  --code-color: rgb(255, 229, 144);
-  --mark-color: white;
-  --text: black;
-  --second-text: rgb(141, 255, 153);
-  --third-text: rgb(153, 205, 255);
-  --added-text: rgb(0, 146, 146);
-  --padding-main: 10vw;
-  --left-panel: 0;
+:global(.no-invert) {
+  filter: invert(0);
 }
 
-@media (prefers-color-scheme: dark) {
-  :global(:root) {
-    --darkness: 100%;
-    --text: white;
-  }
-}
 :global(.invert) {
-  filter: invert(var(--darkness));
+  filter: invert(var(--invert));
+}
+
+:global(.right) {
+  float: right;
+}
+
+:global(.left) {
+  float: left;
+}
+
+:global(.hidden) {
+  display: none;
 }
 
 :global(section.collapse.example) :global(button.switcher) {

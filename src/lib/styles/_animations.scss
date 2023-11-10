@@ -1,0 +1,36 @@
+.wavy-text span {
+  display: inline-block;
+  animation: wavy-text 0.7s ease-in-out forwards;
+}
+
+$radius: 0.5rem;
+
+@keyframes wavy-text-wait {
+
+  0%,
+  50% {
+    transform: translateY(0);
+  }
+
+  25% {
+    transform: translateY(-$radius);
+  }
+}
+
+@keyframes wavy-text {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-$radius);
+  }
+}
+
+
+.dots {
+  letter-spacing: 0.1rem;
+  font-weight: 900;
+}
